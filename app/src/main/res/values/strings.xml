@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">StartingPoint</string>
+    <string name="fact_image">Image describing the fact</string>
+</resources>

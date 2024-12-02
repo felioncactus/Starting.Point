@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#1B1833</color>
+    <color name="white">#D8D2C2</color>
+    <color name="chipBackground">#D8D2C2</color>
+    <color name="chipText">#1B1833</color>
+    <color name="chipStroke">#B5AC9A</color>
+    <color name="chipSelectedBackground">#B5AC9A</color>
+    <color name="chipSelectedText">#FFFFFF</color>
+
+</resources>
