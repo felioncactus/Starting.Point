@@ -102,19 +102,22 @@ public class MainActivity extends AppCompatActivity {
                         List<RelatedPages.RelatedPage> relatedPages = response.body().getPages();
 
                         for (RelatedPages.RelatedPage page : relatedPages) {
-                            String imageUrl = page.getThumbnail() != null ? page.getThumbnail().getSource() : null;
+                            String extract = page.getExtract();
+                            if (extract != null && extract.length() > 100) {
+                                String imageUrl = page.getThumbnail() != null ? page.getThumbnail().getSource() : null;
 
-                            String displayTitle = page.getTitle().replace("_", " ");
+                                String displayTitle = page.getTitle().replace("_", " ");
 
-                            Fact fact = new Fact(
-                                    displayTitle,  // Display the title with spaces
-                                    page.getExtract(),
-                                    page.getContentUrls().getDesktop().getPage(),
-                                    imageUrl
-                            );
+                                Fact fact = new Fact(
+                                        displayTitle,
+                                        extract,
+                                        page.getContentUrls().getDesktop().getPage(),
+                                        imageUrl
+                                );
 
-                            factList.add(fact);
-                            adapter.notifyItemInserted(factList.size() - 1);
+                                factList.add(fact);
+                                adapter.notifyItemInserted(factList.size() - 1);
+                            }
                         }
                         new Handler().postDelayed(() -> {
                             fetchFacts(topics);
@@ -131,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
 
     private List<String> getSavedTopics() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
